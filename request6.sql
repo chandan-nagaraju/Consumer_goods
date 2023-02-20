@@ -1,7 +1,6 @@
 -- customer_code 
 -- customer 
 -- average_discount_percentage
-SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 
 select d.customer_code,c.customer,avg(pre_invoice_discount_pct) over(partition by customer order by customer_code desc) as avg_discount_percentage
 from fact_pre_invoice_deductions d
